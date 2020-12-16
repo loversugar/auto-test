@@ -25,7 +25,8 @@ func main() {
 		chromedp.WithLogf(log.Printf),)
 	defer cancel()
 
-	ctx, cancel = context.WithTimeout(ctx, 30*time.Second)
+	// 控制整个程序运行时间
+	ctx, cancel = context.WithTimeout(ctx, 30 * time.Second)
 	defer cancel()
 
 	if err := chromedp.Run(ctx,
@@ -33,12 +34,17 @@ func main() {
 		chromedp.Navigate(`http://www.baidu.com`),
 		//定位登录按钮
 		chromedp.Click(`document.querySelector(".s-top-login-btn.c-btn.c-btn-primary.c-btn-mini.lb")`, chromedp.ByJSPath),
+		// 添加卡顿时间
+		chromedp.Sleep(time.Duration(3) * time.Second),
 		//使用用户名密码登录
 		chromedp.Click(`TANGRAM__PSP_11__footerULoginBtn`, chromedp.ByID),
+		chromedp.Sleep(time.Duration(3) * time.Second),
 		//输入用户名
 		chromedp.SendKeys(`TANGRAM__PSP_11__userName`, "username", chromedp.ByID),
+		chromedp.Sleep(time.Duration(3) * time.Second),
 		//输入密码
 		chromedp.SendKeys(`TANGRAM__PSP_11__password`, "password", chromedp.ByID),
+		chromedp.Sleep(time.Duration(3) * time.Second),
 		//点击登录按钮
 		chromedp.Click(`TANGRAM__PSP_11__submit`, chromedp.ByID),
 		//截全屏
