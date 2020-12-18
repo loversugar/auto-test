@@ -1,3 +1,4 @@
 .idea/*
 .npm/*
 .config/*
+node_modules/*
