@@ -22,8 +22,8 @@ func main() {
 	defer cancel()
 
 	// 控制整个程序运行时间
-	//ctx, cancel = context.WithTimeout(ctx, 30 * time.Second)
-	//defer cancel()
+	ctx, cancel = context.WithTimeout(ctx, 30 * time.Second)
+	defer cancel()
 
 	if err := chromedp.Run(ctx,
 		chromedp.Navigate("http://localhost:3000"),

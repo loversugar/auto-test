@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {setCookie} from "../../helpers/cookies";
 import '../../style/login.less';
 import { Form, Icon, Input, Button, Checkbox, message, Spin } from 'antd';
+import fs from 'fs';
+
 const FormItem = Form.Item;
 
 const client_id = 'b7f8065ab0c7188c2a21';
@@ -28,7 +30,40 @@ class NormalLoginForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
+            // fs.mkdir('./test',(err)=>{
+            //     if (err) {
+            //         console.log("创建失败");
+            //         return;
+            //     }
+            //     console.log("创建成功");
+                
+            // });
+            // fs.writeFile('./try4.txt', "HelloWorld!");
+            // // 保存行为
+            // // 打开文件
+            // fs.open('./try4.txt', `w`, function(err, fd) {
+            //     if (err) {
+            //         throw err;
+            //     }
+            //     console.log('open file success.');
+            //     var buffer = new Buffer('shiyanlou');
+            //     // 读取文件
+            //     fs.write(fd, buffer, 0, 6, 0, function(err, bytesWritten, buffer) {
+            //         if (err) {
+            //             throw err;
+            //         }
+
+            //         console.log('write success.');
+            //         // 打印出buffer中存入的数据
+            //         console.log(bytesWritten, buffer.slice(0, bytesWritten).toString());
+
+            //         // 关闭文件
+            //         fs.close(fd);
+            //     });
+            // });
+
             if (!err) {
+                fs.writeFile('./try4.txt', "HelloWorld");
                 console.log('Received values of form: ', values);
                 if(PatchUser(values)){
                     this.setState({
@@ -37,6 +72,7 @@ class NormalLoginForm extends Component {
 
                     setCookie('mspa_user',JSON.stringify(values));
                     message.success('login successed!'); //成功信息
+
                     let that = this;
                     setTimeout(function() { //延迟进入
                         that.props.history.push({pathname:'/app',state:values});
