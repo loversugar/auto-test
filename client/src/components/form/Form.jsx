@@ -21,7 +21,7 @@ Mock.mock('/data', data);
 
 //数组中是否包含某项
 function isContains(arr, item){
-    arr.map(function (ar) {
+    arr.foreach(function (ar) {
         if(ar === item){
             return true;
         }
@@ -30,7 +30,7 @@ function isContains(arr, item){
 }
 //找到对应元素的索引
 function catchIndex(arr, key){ //获取INDEX
-    arr.map(function (ar, index) {
+    arr.foreach(function (ar, index) {
         if(ar.key === key){
             return index;
         }
@@ -39,7 +39,7 @@ function catchIndex(arr, key){ //获取INDEX
 }
 //替换数组的对应项
 function replace(arr, item, place){ //arr 数组,item 数组其中一项, place 替换项
-    arr.map(function (ar) {
+    arr.foreach(function (ar) {
         if(ar.key === item){
             arr.splice(arr.indexOf(ar),1,place)
         }
@@ -132,7 +132,7 @@ export default class UForm extends Component{
     componentDidMount(){
         axios.get('/address')
             .then(function (response) {
-                response.data.map(function(province){
+                response.data.foreach(function(province){
                     options.push({
                         value: province.name,
                         label: province.name,

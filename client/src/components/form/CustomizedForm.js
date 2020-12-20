@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Modal, Form, Input, Radio, InputNumber, Cascader, Select, AutoComplete } from 'antd';
+import { Modal, Form, Input, Radio, InputNumber, Cascader, AutoComplete } from 'antd';
 import axios from 'axios';
-import address from './request/address';
 
 const FormItem = Form.Item;
-const Option = Select.Option;
 const AutoCompleteOption = AutoComplete.Option;
 const options = [];
 
@@ -12,13 +10,11 @@ class CustomizedForm extends Component{
     state = {
         autoCompleteResult: [],
     };
-    constructor(props){
-        super(props);
-    }
+    
     componentDidMount(){
         axios.get('/address')
             .then(function (response) {
-                response.data.map(function(province){
+                response.data.foreach(function(province){
                     options.push({
                         value: province.name,
                         label: province.name,

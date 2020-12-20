@@ -117,6 +117,8 @@ class Dashboard extends Component {
                                     return 'Gas';
                                 case '2' :
                                     return 'F';
+                                default:
+                                    return 'E';
                             }
                         }
                     },
@@ -164,6 +166,8 @@ class Dashboard extends Component {
                                     return 'Water';
                                 case '2' :
                                     return 'C';
+                                default:
+                                    return 'H';
                             }
                         }
                     },

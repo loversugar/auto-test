@@ -222,8 +222,8 @@ export default class MIndex extends Component {
                                         src={zysoft}
                                         style={{width: '60px', height: '60px', borderRadius: '50%', marginBottom:16}}
                                     />
-                                    <div>zysoft</div>
-                                    <div>zhaoyu_m69@163.com</div>
+                                    <div>Totti</div>
+                                    <div>Totti@163.com</div>
                                 </div>
                                 <div className='weather'>
                                     {/*心知天气API*/}
@@ -231,7 +231,7 @@ export default class MIndex extends Component {
                                         <img src={require('../../style/img/0.png')} alt=""/>
                                     </div>
                                     <div className='weather-info'>
-                                        <span>南京</span>&nbsp;<span>16℃</span>
+                                        <span>Shanghai</span>&nbsp;<span>16℃</span>
                                     </div>
                                 </div>
                             </Card>

@@ -3,9 +3,7 @@ import { Table, Icon, Popconfirm } from 'antd';
 import moment from 'moment';
 
 export default class FormTable extends Component{
-    constructor(props){
-        super(props);
-    }
+    
     render(){
         const { checkChange, onDelete, editClick, dataSource, loading } = this.props;
         const rowSelection = {
