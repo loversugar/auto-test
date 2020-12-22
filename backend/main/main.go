@@ -31,6 +31,7 @@ func main() {
 		chromedp.SendKeys(`username`, "username", chromedp.ByID),
 		chromedp.Sleep(3 * time.Second),
 		chromedp.SendKeys(`password`, "password", chromedp.ByID),
+		chromedp.Click(``, chromedp.ByID),
 		chromedp.Sleep(time.Duration(3) * time.Second),); err!= nil {
 		fmt.Println(err)
 	}

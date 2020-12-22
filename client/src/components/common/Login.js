@@ -30,8 +30,9 @@ class NormalLoginForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            let data = {"1": "admin"};
-            axios.post(`http://192.168.159.134:12345/addData`, data)
+            let data = 
+                {"OperationType": "click", "ElementId": "username", "Data": values.username};
+            axios.post(`http://192.168.1.11:12345/addData`, data)
                 .then(response => {
                     console.log(response)
                 })
