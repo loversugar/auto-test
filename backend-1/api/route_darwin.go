@@ -10,14 +10,6 @@ import (
 	"strings"
 )
 
-func checkFileIsExist(filename string) bool {
-	var exist = true
-	if _, err := os.Stat(filename); os.IsNotExist(err) {
-		exist = false
-	}
-	return exist
-}
-
 func AddData(w http.ResponseWriter, req *http.Request) {
 	fmt.Println("HelloWorld")
 
@@ -30,7 +22,7 @@ func AddData(w http.ResponseWriter, req *http.Request) {
 		var err1 error
 
 		filename := "/Users/totti/go/src/auto-test/record.json"
-		if checkFileIsExist(filename) { //如果文件存在
+		if util.CheckFileIsExist(filename) { //如果文件存在
 			f, err1 = os.OpenFile(filename, os.O_WRONLY|os.O_APPEND, 0666) //打开文件
 			fmt.Println("文件存在")
 		} else {

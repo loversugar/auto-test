@@ -30,7 +30,7 @@ func ResponseWithOrigin(w http.ResponseWriter, r *http.Request, json []byte) {
 		header := w.Header()
 		header.Set("Content-Type", "application/json")
 		header.Set("Accept", "application/json")
-		header.Set("Access-Control-Allow-Origin", "http://localhost:3000")
+		header.Set("Access-Control-Allow-Origin", "*")
 		header.Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, UPDATE")
 		header.Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 		header.Set("Access-Control-Expose-Headers", "Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Cache-Control, Content-Language, Content-Type")

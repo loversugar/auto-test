@@ -31,10 +31,18 @@ class NormalLoginForm extends Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             let data = 
-                {"OperationType": "click", "ElementId": "username", "Data": values.username};
-            axios.post(`http://192.168.1.11:12345/addData`, data)
+                {"OperationType": "SendKey", "ElementId": "username", "Data": values.username};
+            axios.post(`http://192.168.159.134:12345/addData`, data)
                 .then(response => {
-                    console.log(response)
+                    data = {"OperationType": "SendKey", "ElementId": "password", "Data": values.password};
+                    axios.post(`http://192.168.159.134:12345/addData`, data)
+                    .then(response => {
+                        data = {"OperationType": "click", "ElementId": "login", "Data": values.username};
+                        axios.post(`http://192.168.159.134:12345/addData`, data)
+                        .then(response => {
+                            console.log(response)
+                        })
+                    })
                 })
 
             if (!err) {
@@ -91,7 +99,7 @@ class NormalLoginForm extends Component {
                                 <Checkbox>记住我</Checkbox>
                             )}
                             <a className="login-form-forgot" href="" style={{float:'right'}}>忘记密码?</a>
-                            <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
+                            <Button id="login" type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
                                 登录
                             </Button>
                             Or <a href="">现在就去注册!</a>
