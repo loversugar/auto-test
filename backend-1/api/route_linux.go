@@ -23,9 +23,11 @@ func AddData(w http.ResponseWriter, req *http.Request) {
 
 		if util.CheckFileIsExist(util.FileName) { //如果文件存在
 			f, err1 = os.OpenFile(util.FileName, os.O_WRONLY|os.O_APPEND, 0666) //打开文件
+			defer f.Close()
 			fmt.Println("文件存在")
 		} else {
 			f, err1 = os.Create(util.FileName) //创建文件
+			defer f.Close()
 			fmt.Println("文件不存在")
 		}
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"auto-test/utils"
 	"context"
 	"fmt"
 	"github.com/chromedp/chromedp"
@@ -22,17 +23,22 @@ func main() {
 	defer cancel()
 
 	// 控制整个程序运行时间
-	ctx, cancel = context.WithTimeout(ctx, 30 * time.Second)
+	ctx, cancel = context.WithTimeout(ctx, 50 * time.Second)
 	defer cancel()
 
-	if err := chromedp.Run(ctx,
+	datas, err := utils.ReadFileToJson("/home/C5311429/go/src/auto-test/record.json")
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	var actions []chromedp.Action
+	actions = append(actions,
 		chromedp.Navigate("http://localhost:3000"),
-		chromedp.Sleep(time.Duration(3) * time.Second),
-		chromedp.SendKeys(`username`, "username", chromedp.ByID),
-		chromedp.Sleep(3 * time.Second),
-		chromedp.SendKeys(`password`, "password", chromedp.ByID),
-		chromedp.Click(``, chromedp.ByID),
-		chromedp.Sleep(time.Duration(3) * time.Second),); err!= nil {
+		chromedp.Sleep(time.Duration(3) * time.Second))
+
+	actions = utils.ParserObjectsTotActions(actions, datas)
+
+	if err := chromedp.Run(ctx, actions...); err!= nil {
 		fmt.Println(err)
 	}
 
