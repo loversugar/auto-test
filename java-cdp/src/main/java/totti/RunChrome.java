@@ -18,13 +18,15 @@ import utils.FlagUtils;
 public class RunChrome {
     public static void main(String[] args) throws IOException, InterruptedException {
         // String tempDir = "/home/C5311429/temp/chromedb-runner" + new Random().nextInt(1000);
-        String tempDir = "/Users/totti/temp/chromedb-runner" + new Random().nextInt(1000);
+        String prefix = "/Users/totti/temp/";
+        String tempDir = prefix + "chromedb-runner" + new Random().nextInt(1000);
         File file = new File(tempDir);
         if (!file.exists()) {
             file.mkdir();
         }
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            FileUtils.deleteDir(file);
+            System.out.println(111);
+            FileUtils.deleteDir(new File(prefix));
         }));
 
         String methodName = "Page.navigate";
