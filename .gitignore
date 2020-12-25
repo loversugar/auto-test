@@ -1,5 +1,7 @@
 .idea/*
 .npm/*
 .config/*
-./chromedb-java/.idea/*
+*/.idea/*
+*/build/*
+*/.gradle/*
 node_modules/*
