@@ -1,0 +1,2 @@
+docker pull node:14
+docker run -it --rm -v ~/go/src/auto-test/.npm:/root/.npm -v ~/go/src/auto-test/.config:/root/.config -v ~/go/src/auto-test:/auto-test -p 3000:3000  995ff80c793e bash
