@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {setCookie} from "../../helpers/cookies";
 import '../../style/login.less';
 import { Form, Icon, Input, Button, Checkbox, message, Spin } from 'antd';
-import fs from 'fs';
+import axios from 'axios';
 
 const FormItem = Form.Item;
 
@@ -30,40 +30,13 @@ class NormalLoginForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            // fs.mkdir('./test',(err)=>{
-            //     if (err) {
-            //         console.log("创建失败");
-            //         return;
-            //     }
-            //     console.log("创建成功");
-                
-            // });
-            // fs.writeFile('./try4.txt', "HelloWorld!");
-            // // 保存行为
-            // // 打开文件
-            // fs.open('./try4.txt', `w`, function(err, fd) {
-            //     if (err) {
-            //         throw err;
-            //     }
-            //     console.log('open file success.');
-            //     var buffer = new Buffer('shiyanlou');
-            //     // 读取文件
-            //     fs.write(fd, buffer, 0, 6, 0, function(err, bytesWritten, buffer) {
-            //         if (err) {
-            //             throw err;
-            //         }
-
-            //         console.log('write success.');
-            //         // 打印出buffer中存入的数据
-            //         console.log(bytesWritten, buffer.slice(0, bytesWritten).toString());
-
-            //         // 关闭文件
-            //         fs.close(fd);
-            //     });
-            // });
+            let data = {"1": "admin"};
+            axios.post(`http://192.168.159.134:12345/addData`, data)
+                .then(response => {
+                    console.log(response)
+                })
 
             if (!err) {
-                fs.writeFile('./try4.txt', "HelloWorld");
                 console.log('Received values of form: ', values);
                 if(PatchUser(values)){
                     this.setState({
