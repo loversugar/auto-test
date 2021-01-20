@@ -1,4 +1,5 @@
 .idea/*
 .npm/*
 .config/*
+./chromedb-java/.idea/*
 node_modules/*
